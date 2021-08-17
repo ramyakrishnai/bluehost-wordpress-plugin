@@ -21,7 +21,6 @@ const aboutMeTourSteps = (apiResponse) => {
         {
             when: {
                 show: () => {
-                    window.nfTour.on()
                     dispatch('core/block-editor').lockPostSaving('bluehost-general-tour');
                     dispatch('core/block-editor').lockPostAutosaving('bluehost-general-tour');
                 }
