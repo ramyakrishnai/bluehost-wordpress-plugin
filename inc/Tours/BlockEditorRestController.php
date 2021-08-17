@@ -55,6 +55,9 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
             case 'home':
                 $steps = $this->steps_home_page();
                 break;
+            case 'about-me':
+                $steps = $this->steps_about_me();
+                break;
         }
 
         return \rest_ensure_response( $steps );
@@ -320,4 +323,115 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
         );
     }
 
+    /**
+     * Shepherd.js Steps for About Me Tour
+     *
+     * @return array
+     */
+    private function steps_about_me() {
+        $about_me_image = '<img src="https://cdn.hiive.space/bluehost/about-page.svg" alt="' . \__('People around monitor working and pointing.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0 auto;" />';
+
+        return array(
+            array(
+                'id' => 'about-me-intro',
+                'classes' => 'wrap-large',
+                'buttons' => array(
+                    Shared::secondary_button( 'Exit', 'cancel' ),
+                    Shared::primary_button( 'Get Started' ),
+                ),
+                'title' => __('Learn to build an About Me page in WordPress', 'bluehost-wordpress-plugin'),
+                'text'  => Shared::large_step( $about_me_image . __('Learn to use Blocks and tell your story', 'bluehost-wordpress-plugin') ),
+            ),
+            array(
+                'id' => 'about-me-toolbar',
+                'attachTo' => array( 'element' => '.interface-interface-skeleton__header', 'on' => 'auto' ),
+                'buttons' => array(
+                    Shared::secondary_button(),
+                    Shared::primary_button(),
+                ),
+                'title' => __('Find tools you\'ll need on the Editor Toolbar', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'Insert new Blocks & Patterns to create your page. Then, save your work, preview how your visitors will see it and publish.' ),
+                'scrollTo' => true,
+                'canClickTarget' => false,
+            ),
+            array(
+                'id' => 'about-me-content-area',
+                'attachTo' => array( 'element' => '.interface-interface-skeleton__content', 'on' => 'auto' ),
+                'buttons' => array(
+                    Shared::secondary_button(),
+                    Shared::primary_button(),
+                ),
+                'title' => __('Work on your Title and Blocks in the Content Area', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'Assemble Paragraphs, Headings, Lists, Media, Embeds and more to tell your story and interact with visitors.' ),
+                'scrollTo' => true,
+                'canClickTarget' => false,
+            ),
+            array(
+                'id' => 'about-me-settings-sidebar',
+                'attachTo' => array( 'element' => '.interface-interface-skeleton__sidebar', 'on' => 'auto' ),
+                'buttons' => array(
+                    Shared::secondary_button(),
+                    Shared::primary_button(),
+                ),
+                'title' => __('Sort, schedule and configure your document from the Settings Sidebar', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'Configure when your content publishes, how it\'s sorted and tagged, set the Featured image and write a short summary excerpt.' ),
+                'scrollTo' => true,
+                'canClickTarget' => false,
+            ),
+            array(
+                'id' => 'about-me-block-sidebar',
+                'attachTo' => array( 'element' => '.interface-interface-skeleton__sidebar', 'on' => 'auto' ),
+                'buttons' => array(
+                    Shared::secondary_button(),
+                    Shared::primary_button(),
+                ),
+                'title' => __('Style and design content from the Block Sidebar', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'Each kind of Block has a unique sidebar that opens when you select it. Use those options to put your content in it\'s best light and layout.' ),
+                'scrollTo' => true,
+                'canClickTarget' => false,
+            ),
+            array(
+                'id' => 'about-me-block-inserter',
+                'attachTo' => array( 'element' => '.interface-interface-skeleton__secondary-sidebar', 'on' => 'auto' ),
+                'buttons' => array(
+                    Shared::secondary_button(),
+                    Shared::primary_button(),
+                ),
+                'title' => __('Find all the pieces to block puzzle in the Block Inserter', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'Pick single Blocks or preassembled Patterns with common designs. Install WordPress Plugins with Custom Blocks for even more powerful sites.' ),
+                'scrollTo' => false,
+                'popperOptions' => array(
+                    'modifiers' => array(
+                        array(
+                            'name' => 'focusAfterRender',
+                            'enabled' => false,
+                        )
+                    )
+                ),
+                'canClickTarget' => false,
+            ),
+            array(
+                'id' => 'about-me-copying',
+                'buttons' => array(
+                    Shared::secondary_button(),
+                    Shared::primary_button(),
+                ),
+                'title' => __('Copy from your preferred editor and Block experts', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'Paste from Microsoft Word and Google Docs or common layouts from beautiful examples in the <a href="https://wordpress.org/patterns">WordPress Pattern Directory</a>.' ),
+                'scrollTo' => true,
+                'canClickTarget' => false,
+            ),
+            array(
+                'id' => 'about-me-blocked',
+                'buttons' => array(
+                    Shared::secondary_button(),
+                    Shared::primary_button('Finish Tour', 'complete')
+                ),
+                'title' => __('Getting blocked by Blocks?', 'bluehost-wordpress-plugin'),
+                'text' => Shared::step( 'Check out the Official Guide. Get personalized help from our Blue Sky experts. Continue for our power tips.' ),
+                'scrollTo' => true,
+                'canClickTarget' => false,
+            ),
+        );
+    }
 }

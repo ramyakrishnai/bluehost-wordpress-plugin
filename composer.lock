@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d056d2528a8d5e1b4b8d69b5b35d2555",
+    "content-hash": "4782d09a377f40e7794fed22781d4cb7",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -312,7 +312,7 @@
         },
         {
             "name": "endurance/wp-module-data",
-            "version": "1.4.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluehost/endurance-wp-module-data.git",
@@ -5147,12 +5147,14 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "endurance/wp-module-data": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }

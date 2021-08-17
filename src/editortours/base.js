@@ -1,8 +1,8 @@
 import { Fragment, useContext } from '@wordpress/element';
-import { PluginPrePublishPanel } from '@wordpress/edit-post';
 import { getQueryArg } from '@wordpress/url';
+import { select, dispatch } from '@wordpress/data';
 import { ShepherdTour, ShepherdTourContext } from 'react-shepherd';
-import { merge, findIndex } from 'lodash';
+import { map, merge, findIndex } from 'lodash';
 import { initEvents } from './events';
 
 /**
@@ -17,6 +17,14 @@ export const awaitElement = async selector => {
     }
 
     return document.querySelector(selector);
+}
+
+export const clearAllBlocks = async () => {
+    const blocks = await select('core/block-editor').getBlocks();
+    const ids = map(blocks, 'clientId');
+    const removed = await dispatch('core/block-editor').removeBlocks(ids);
+
+    return removed;
 }
 
 /**

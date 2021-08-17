@@ -1,10 +1,11 @@
 import { select, dispatch } from '@wordpress/data';
 import { Notice, Button } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
-import { PluginPrePublishPanel } from '@wordpress/edit-post';
+import { PluginPrePublishPanel, PluginPostPublishPanel } from '@wordpress/edit-post';
 import { replace, filter } from 'lodash';
 import { _n, __, sprintf } from '@wordpress/i18n';
 import { Fragment } from 'react';
+import apiFetch from '@wordpress/api-fetch';
 // Key namespace for Block Editor store
 const EDITOR_STORE = 'core/block-editor';
 
@@ -176,12 +177,63 @@ const InnerValidationPanel = () => {
     )
 }
 
+const InnerPostPublishNotifications = () => {
+    const [notifications, setNotifications] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const getNotifications = () => {
+        // apiFetch()
+    }
+
+    useEffect(() => {
+        apiFetch({
+            path: '/bluehost/v1/notifications/events',
+            method: 'POST',
+            data: {
+                action: 'block-editor-post-publish',
+                type: window.nfTourContext,
+            },
+        }).then( response => {
+            const beContextNotices = [];
+            if ( 'undefined' !== typeof response.data ) {
+                response.data.map( notice => {
+                    if ( 'undefined' !== typeof notice.locations ) {
+                        notice.locations.forEach( ({context}) => {
+                            if ('block-editor-post-publish' === context ) {
+                                beContextNotices.push(notice);
+                            }
+                        })
+                    }
+                })
+            }
+            if (beContextNotices.length > 0) {
+                jQuery('.newfold-default-content-published-notifications').addClass('loaded');
+                setNotifications(beContextNotices);
+                setIsLoaded(true);
+            }
+        })
+    }, [])
+
+    if( ! isLoaded ) {
+        return false;
+    }
+
+    return(
+        <Fragment>
+            {notifications.map( notice => <div key={notice.id} dangerouslySetInnerHTML={{ __html: notice.content }} data-id={notice.id} /> ) }
+        </Fragment>
+    )
+
+}
+
 /**
  * Tap Block Editor Slotfill with Notices to warn users about publishing placeholders.
  * 
  * @returns 
  */
 export const PrePublishValidation = () => {
+    if ( 'about-me' === window.nfTourContext ) {
+        return false; // no validation on about me yet
+    }
     return (
         <PluginPrePublishPanel
             className="newfold-default-content-validation"
@@ -192,6 +244,20 @@ export const PrePublishValidation = () => {
         >
             <InnerValidationPanel />
         </PluginPrePublishPanel>
+    )
+}
+
+export const PostPublishNotifications = () => {
+    return (
+        <PluginPostPublishPanel
+            className="newfold-default-content-published-notifications"
+            title={__('Bluehost', 'bluehost-wordpress-plugin')}
+            opened={true}
+            initialOpen={true}
+            icon={<span />}
+        >
+            <InnerPostPublishNotifications />
+        </PluginPostPublishPanel>
     )
 }
 
@@ -231,5 +297,6 @@ export default {
     setupCaretEvents,
     initHighlightEraser,
     PrePublishValidation,
+    PostPublishNotifications,
     scrubPlaceholders
 }

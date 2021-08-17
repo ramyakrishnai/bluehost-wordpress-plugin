@@ -263,6 +263,20 @@ body.is-fullscreen-mode { // gutenberg fullscreen class
     }
 }
 
+.newfold-default-content-published-notifications {
+    display: none;
+    .components-panel__arrow {
+        display: none;
+    }
+    &.loaded {
+        display: block;
+    }
+    .components-notice {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 .bwa-loader {
     margin: 50px auto;
     width: 6rem;

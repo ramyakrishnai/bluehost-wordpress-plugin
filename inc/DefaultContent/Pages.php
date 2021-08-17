@@ -26,7 +26,7 @@ class Pages {
 	 *
 	 * @var array
 	 */
-	public static $contexts = array( 'about', 'contact', 'home' );
+	public static $contexts = array( 'about', 'contact', 'home', 'about-me' );
 	
 	/**
 	 * Get class instance.

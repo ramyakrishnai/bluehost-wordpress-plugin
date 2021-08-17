@@ -133,6 +133,11 @@ class PagesRestController extends BaseHiiveController {
                 $content = ob_get_clean();
                 break;
 
+            case 'about-me':
+                $title = "About Me";
+                $content = '';
+                break;
+
             default:
                 $title = $page;
                 $content = 'Error: No Match Found for Specified Default Content Context';

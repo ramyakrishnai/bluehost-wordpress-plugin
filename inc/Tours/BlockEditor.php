@@ -118,7 +118,7 @@ class BlockEditor {
 	 * @return void
 	 */
 	public function load_runtime_assets() {
-		
+
 		$windowprops = 'window.nfTourContext="' . $this->tour_context . '";';
 		// save initial placeholder text for all future comparisons
 		$post_id = isset( $_GET['post'] ) ? filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT ) : false;
@@ -144,11 +144,12 @@ class BlockEditor {
 		if ( false === $this->trigger_context ) {
 			return;
 		}
+		$display = 'about-me' === $this->tour_context ? __('About Me', 'bluehost-wordpress-plugin') : ucfirst( $this->tour_context );
 		?>
 			<div id="newfold-editortours-loading">
 				<div class="inner">
 					<div class="bwa-loader"></div>
-					<p><?php \_e('Loading', 'bluehost-wordpress-plugin'); ?> <?php echo ucfirst( \esc_html( $this->tour_context ) ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
+					<p><?php \_e('Loading', 'bluehost-wordpress-plugin'); ?> <?php echo \esc_html( $display ); ?> <?php \_e('Page', 'bluehost-wordpress-plugin'); ?>...</p>
 				</div>
 			</div>
 			<div id="newfold-editortours"></div>

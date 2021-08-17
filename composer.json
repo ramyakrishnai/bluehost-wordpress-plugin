@@ -27,6 +27,10 @@
                 "mojoness/*",
                 "endurance/*"
             ]
+        },
+        "data_module": {
+            "type": "path",
+            "url": "../../modules/endurance-wp-module-data/"
         }
     },
     "autoload": {
@@ -42,7 +46,7 @@
         "bluehost/endurance-wp-module-loader": "^1.0",
         "bluehost/endurance-wp-module-sso": "^1.0",
         "bluehost/endurance-wp-plugin-updater": "^1.1.1",
-        "endurance/wp-module-data": "^1.4.3",
+        "endurance/wp-module-data": "@dev",
         "wp-forge/helpers": "^1.0",
         "wpscholar/collection": "^1.0",
         "wpscholar/url": "^1.2"
