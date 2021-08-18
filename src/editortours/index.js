@@ -4,7 +4,8 @@ import { lazy, Suspense, Fragment } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { ErrorBoundary } from 'react-error-boundary';
 import { suppressCoreTour } from './suppress-core-tour';
-import { setupCaretEvents, PrePublishValidation, PostPublishNotifications } from './highlighting';
+import { setupCaretEvents, PrePublishValidation } from './highlighting';
+import { PostPublishNotifications } from './hiive-notices';
 
 const AboutTour = lazy(() => import('./about'));
 const ContactTour = lazy(() => import('./contact'));

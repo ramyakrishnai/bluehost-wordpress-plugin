@@ -329,7 +329,35 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
      * @return array
      */
     private function steps_about_me() {
-        $about_me_image = '<img src="https://cdn.hiive.space/bluehost/about-page.svg" alt="' . \__('People around monitor working and pointing.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0 auto;" />';
+        $about_me_image = '<img src="https://cdn.hiive.space/bluehost/ise/intro.svg" alt="' . \__('Group jumping in excitement.', 'bluehost-wordpress-plugin') . '" height="340" width="auto" style="display:block;margin:0 auto;" />';
+
+        ob_start(); ?>
+            <ul class="about-me-tools">
+                <li>
+                    <div class="components-button edit-post-header-toolbar__inserter-toggle is-primary has-icon"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"></path></svg></div>
+                    <?php \_e('Insert new Blocks &amp; Patterns', 'bluehost-wordpress-plugin'); ?>
+                </li>
+                <li>
+                    <div class="components-button is-pressed has-icon" aria-label="Settings"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M10.289 4.836A1 1 0 0111.275 4h1.306a1 1 0 01.987.836l.244 1.466c.787.26 1.503.679 2.108 1.218l1.393-.522a1 1 0 011.216.437l.653 1.13a1 1 0 01-.23 1.273l-1.148.944a6.025 6.025 0 010 2.435l1.149.946a1 1 0 01.23 1.272l-.653 1.13a1 1 0 01-1.216.437l-1.394-.522c-.605.54-1.32.958-2.108 1.218l-.244 1.466a1 1 0 01-.987.836h-1.306a1 1 0 01-.986-.836l-.244-1.466a5.995 5.995 0 01-2.108-1.218l-1.394.522a1 1 0 01-1.217-.436l-.653-1.131a1 1 0 01.23-1.272l1.149-.946a6.026 6.026 0 010-2.435l-1.148-.944a1 1 0 01-.23-1.272l.653-1.131a1 1 0 011.217-.437l1.393.522a5.994 5.994 0 012.108-1.218l.244-1.466zM14.929 12a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"></path></svg></div> 
+                    <?php \_e('Open/Close Sidebar', 'bluehost-wordpress-plugin'); ?>
+                </li>
+                <li>
+                    <div class="components-dropdown components-dropdown-menu edit-post-more-menu"><div class="components-button components-dropdown-menu__toggle has-icon" aria-label="Options"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M13 19h-2v-2h2v2zm0-6h-2v-2h2v2zm0-6h-2V5h2v2z"></path></svg></div></div> 
+                    <?php \_e('Main Menu', 'bluehost-wordpress-plugin'); ?>
+                </li>
+            </ul>
+        <?php
+        $tools = ob_get_clean();
+
+        ob_start() ?>
+        <?php \_e('Since you\'re more focused on sharing information with visitors, think about including', 'bluehost-wordpress-plugin'); ?>:
+        <ul>
+            <li><?php \_e('Check out the Official WordPress Guide.', 'bluehost-wordpress-plugin'); ?></li>
+	        <li><?php \_e('Go deep at our Resource Center', 'bluehost-wordpress-plugin'); ?></li>
+            <li><?php \_e('Get personalized help from our Blue Sky experts.', 'bluehost-wordpress-plugin'); ?></li>
+        </ul>
+        <?php
+        $blocked = ob_get_clean();
 
         return array(
             array(
@@ -339,8 +367,8 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::secondary_button( 'Exit', 'cancel' ),
                     Shared::primary_button( 'Get Started' ),
                 ),
-                'title' => __('Learn to build an About Me page in WordPress', 'bluehost-wordpress-plugin'),
-                'text'  => Shared::large_step( $about_me_image . __('Learn to use Blocks and tell your story', 'bluehost-wordpress-plugin') ),
+                'title' => __('Let\'s build you a great About Me page!', 'bluehost-wordpress-plugin'),
+                'text'  => Shared::large_step( $about_me_image . __('Make a great impression on visitors with a great About Page for all your followers to hear your story and find you online.', 'bluehost-wordpress-plugin') ),
             ),
             array(
                 'id' => 'about-me-toolbar',
@@ -350,7 +378,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::primary_button(),
                 ),
                 'title' => __('Find tools you\'ll need on the Editor Toolbar', 'bluehost-wordpress-plugin'),
-                'text' => Shared::step( 'Insert new Blocks & Patterns to create your page. Then, save your work, preview how your visitors will see it and publish.' ),
+                'text' => Shared::step(  $tools ),
                 'scrollTo' => true,
                 'canClickTarget' => false,
             ),
@@ -392,7 +420,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
             ),
             array(
                 'id' => 'about-me-block-inserter',
-                'attachTo' => array( 'element' => '.interface-interface-skeleton__secondary-sidebar', 'on' => 'auto' ),
+                'attachTo' => array( 'element' => '.interface-interface-skeleton__secondary-sidebar', 'on' => 'right-start' ),
                 'buttons' => array(
                     Shared::secondary_button(),
                     Shared::primary_button(),
@@ -428,7 +456,7 @@ class BlockEditorRestController extends \Newfold\Plugin\RestApi\BaseHiiveControl
                     Shared::primary_button('Finish Tour', 'complete')
                 ),
                 'title' => __('Getting blocked by Blocks?', 'bluehost-wordpress-plugin'),
-                'text' => Shared::step( 'Check out the Official Guide. Get personalized help from our Blue Sky experts. Continue for our power tips.' ),
+                'text' => Shared::step( $blocked ),
                 'scrollTo' => true,
                 'canClickTarget' => false,
             ),

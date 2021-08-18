@@ -111,11 +111,12 @@ class NotificationsApi {
 					return current_user_can( 'manage_options' );
 				},
 				'callback'            => function ( \WP_REST_Request $request ) {
-
 					$request = new \WP_REST_Request( 'POST', '/bluehost/v1/data/events' );
 					$request->set_body( \WP_REST_Server::get_raw_data() );
 					$request->set_header( 'Content-Type', 'application/json' );
 					$response = rest_do_request( $request );
+					error_log( 'response from /data/events inside /notifications/events callback');
+					error_log( var_export( $response, true ) );
 					// The hub API returns arrays of Notification objects. Each Notification has an array of
 					// location objects. However, the WP REST API converts all nested objects to
 					// associative arrays in a standard HTTP response. Since this proxing through an internal

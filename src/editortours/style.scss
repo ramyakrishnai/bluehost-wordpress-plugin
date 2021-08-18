@@ -140,6 +140,20 @@ body.is-fullscreen-mode { // gutenberg fullscreen class
     &[data-shepherd-step-id="finish-cta"] {
         left: 20px !important;
     }
+    &[data-shepherd-step-id="about-me-toolbar"] {
+        top: 24px !important;
+    }
+    &[data-shepherd-step-id="about-me-settings-sidebar"],
+    &[data-shepherd-step-id="about-me-block-sidebar"] {
+        right: 24px !important;
+    }
+    &[data-shepherd-step-id="about-me-block-inserter"] {
+        top: 6px !important;
+        left: 24px !important;
+        .shepherd-arrow {
+            top: -24px !important;
+        }
+    }
 }
 .shepherd-enabled.shepherd-element {
     opacity: 1;
@@ -248,6 +262,7 @@ body.is-fullscreen-mode { // gutenberg fullscreen class
 .newfold-default-content-validation {
     .components-panel__arrow {
         display: none;
+        visibility: hidden;
     }
     .components-notice {
         margin-left: 0;
@@ -263,10 +278,24 @@ body.is-fullscreen-mode { // gutenberg fullscreen class
     }
 }
 
+.about-me-tools {
+    li {
+        list-style-type: none;
+        padding-bottom: 4px;
+        div {
+            position: relative;
+            top: 2px;
+            left: -4px;
+        }
+    }
+}
+
 .newfold-default-content-published-notifications {
     display: none;
+    .components-panel__body-title,
     .components-panel__arrow {
         display: none;
+        visibility: hidden;
     }
     &.loaded {
         display: block;

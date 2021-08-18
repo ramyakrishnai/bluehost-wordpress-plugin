@@ -14,20 +14,20 @@ export const initEvents = (tourName, tour) => {
     initHighlightEraser();
 
     const aboutMeInsertContent = () => {
-        const aboutMeContent = `<!-- wp:image {"align":"center","width":155,"height":155,"sizeSlug":"large"} -->
-        <div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img src="https://cdn.hiive.space/bluehost/ise-demo/placeholder-head-final.png" alt="" width="155" height="155"/></figure></div>
+        const aboutMeContent = `<!-- wp:image {"align":"center","sizeSlug":"large","className":"is-style-rounded"} -->
+        <div class="wp-block-image is-style-rounded"><figure class="aligncenter size-large"><img src="https://cdn.hiive.space/bluehost/ise/bluebot.png" alt=""/><figcaption><strong><em>@botfluencer</em></strong></figcaption></figure></div>
         <!-- /wp:image -->
         
-        <!-- wp:heading {"textAlign":"center","style":{"typography":{"lineHeight":"1.1"}}} -->
-        <h2 class="has-text-align-center" style="line-height:1.1">Botfluencer Blueuser</h2>
+        <!-- wp:heading {"textAlign":"center","style":{"typography":{"lineHeight":"1"}}} -->
+        <h2 class="has-text-align-center" style="line-height:1"><strong>Botfluencer Blueuser</strong></h2>
         <!-- /wp:heading -->
         
         <!-- wp:paragraph {"align":"center","style":{"typography":{"lineHeight":"1"}},"fontSize":"extra-small"} -->
-        <p class="has-text-align-center has-extra-small-font-size" style="line-height:1">YouTube Creator. Twitch Streamer. That dancing TikTok bot.</p>
+        <p class="has-text-align-center has-extra-small-font-size" style="line-height:1"><em>YouTube Creator. Twitch Streamer. That dancing #TikTok bot.</em></p>
         <!-- /wp:paragraph -->
         
-        <!-- wp:social-links {"size":"has-normal-icon-size","className":"items-justified-center"} -->
-        <ul class="wp-block-social-links has-normal-icon-size items-justified-center"><!-- wp:social-link {"url":"#","service":"youtube"} /-->
+        <!-- wp:social-links {"size":"has-large-icon-size","className":"items-justified-center is-style-pill-shape"} -->
+        <ul class="wp-block-social-links has-large-icon-size items-justified-center is-style-pill-shape"><!-- wp:social-link {"url":"#","service":"youtube"} /-->
         
         <!-- wp:social-link {"url":"#","service":"instagram"} /-->
         
@@ -38,10 +38,10 @@ export const initEvents = (tourName, tour) => {
         <!-- wp:social-link {"url":"#","service":"twitter"} /--></ul>
         <!-- /wp:social-links -->
         
-        <!-- wp:columns {"verticalAlignment":null,"align":"wide"} -->
+        <!-- wp:columns {"align":"wide"} -->
         <div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"top","width":"33.33%"} -->
-        <div class="wp-block-column is-vertically-aligned-top" style="flex-basis:33.33%"><!-- wp:buttons {"contentJustification":"center","align":"wide"} -->
-        <div class="wp-block-buttons alignwide is-content-justification-center"><!-- wp:button {"width":100,"style":{"color":{"background":"#111111","text":"#fefefe"},"border":{"radius":6}}} -->
+        <div class="wp-block-column is-vertically-aligned-top" style="flex-basis:33.33%"><!-- wp:buttons {"contentJustification":"center"} -->
+        <div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"width":100,"style":{"color":{"background":"#111111","text":"#fefefe"},"border":{"radius":6}}} -->
         <div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-text-color has-background" style="border-radius:6px;background-color:#111111;color:#fefefe">Watch my videos</a></div>
         <!-- /wp:button -->
         
@@ -52,20 +52,38 @@ export const initEvents = (tourName, tour) => {
         <!-- wp:button {"width":100,"style":{"color":{"background":"#111111","text":"#fefefe"},"border":{"radius":6}}} -->
         <div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-text-color has-background" style="border-radius:6px;background-color:#111111;color:#fefefe">Get 5% off Bluehost</a></div>
         <!-- /wp:button --></div>
+        <!-- /wp:buttons -->
+        
+        <!-- wp:buttons {"contentJustification":"center"} -->
+        <div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"width":50,"className":"is-style-outline"} -->
+        <div class="wp-block-button has-custom-width wp-block-button__width-50 is-style-outline"><a class="wp-block-button__link">Merch</a></div>
+        <!-- /wp:button -->
+        
+        <!-- wp:button {"width":50,"className":"is-style-outline"} -->
+        <div class="wp-block-button has-custom-width wp-block-button__width-50 is-style-outline"><a class="wp-block-button__link">Booking</a></div>
+        <!-- /wp:button --></div>
         <!-- /wp:buttons --></div>
         <!-- /wp:column -->
         
-        <!-- wp:column {"verticalAlignment":"top","width":"66.66%"} -->
-        <div class="wp-block-column is-vertically-aligned-top" style="flex-basis:66.66%"><!-- wp:embed {"url":"https://www.youtube.com/watch?v=mDORe5-zrfs","type":"video","providerNameSlug":"youtube","responsive":true,"className":"wp-embed-aspect-16-9 wp-has-aspect-ratio"} -->
+        <!-- wp:column {"verticalAlignment":"center","width":"66.66%"} -->
+        <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:66.66%"><!-- wp:spacer {"height":1} -->
+        <div style="height:1px" aria-hidden="true" class="wp-block-spacer"></div>
+        <!-- /wp:spacer -->
+        
+        <!-- wp:embed {"url":"https://www.youtube.com/watch?v=mDORe5-zrfs","type":"video","providerNameSlug":"youtube","responsive":true,"className":"wp-embed-aspect-16-9 wp-has-aspect-ratio"} -->
         <figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
         https://www.youtube.com/watch?v=mDORe5-zrfs
-        </div></figure>
+        </div><figcaption><strong>Meet <em>Botfluencer</em> Tuesdays at 10AM ET on Twitch</strong></figcaption></figure>
         <!-- /wp:embed --></div>
         <!-- /wp:column --></div>
         <!-- /wp:columns -->
         
-        <!-- wp:paragraph -->
-        <p>Bluehost is a leading web hosting solutions company. Since our founding in 2003, Bluehost has continually innovated new ways to deliver on our mission: to empower people to fully harness the web. Based in Orem, Utah, we provide comprehensive tools to millions of users throughout the world so anyone, novice or pro, can get on the web and thrive with our web hosting packages.</p>
+        <!-- wp:separator {"className":"is-style-dots"} -->
+        <hr class="wp-block-separator is-style-dots"/>
+        <!-- /wp:separator -->
+        
+        <!-- wp:paragraph {"dropCap":true} -->
+        <p class="has-drop-cap">Bluehost is a leading web hosting solutions company. Since our founding in 2003, Bluehost has continually innovated new ways to deliver on our mission: to empower people to fully harness the web. Based in Orem, Utah, we provide comprehensive tools to millions of users throughout the world so anyone, novice or pro, can get on the web and thrive with our web hosting packages.</p>
         <!-- /wp:paragraph -->
         
         <!-- wp:heading {"level":3} -->
@@ -101,7 +119,7 @@ export const initEvents = (tourName, tour) => {
             category: category,
             data: {
                 step: context?.step?.id
-            }
+            },
         };
         apiFetch({ path: '/bluehost/v1/notifications/events', method: 'POST', data });
     }

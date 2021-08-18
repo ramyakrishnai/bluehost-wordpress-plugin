@@ -31,8 +31,11 @@ class NotificationsRepository {
 	public function __construct() {
 
 		$notifications = get_transient( self::TRANSIENT );
+		error_log( 'NotifcationsRepository get_transient:');
+		error_log( var_export( $notifications, true ) );
 
 		if ( false === $notifications ) {
+			error_log( 'NotifcationsRepository get_transient was empty, making Hiive /notifications request...');
 			$response = wp_remote_get(
 				BH_HUB_URL . '/notifications',
 				array(
@@ -44,10 +47,13 @@ class NotificationsRepository {
 				)
 			);
 			if ( ! is_wp_error( $response ) ) {
+				error_log( 'response not error, body of response:');
 				$body = wp_remote_retrieve_body( $response );
+				error_log( var_export( $body, true ) );
 				$data = json_decode( $body, true );
 				if ( $data && is_array( $data ) ) {
 					$notifications = Arr::get( $data, 'data' );
+					error_log('setting transient...');
 					set_transient( self::TRANSIENT, $notifications, 5 * MINUTE_IN_SECONDS );
 				}
 			}

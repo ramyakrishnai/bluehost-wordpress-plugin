@@ -1,6 +1,7 @@
 import { Fragment, useContext } from '@wordpress/element';
 import { getQueryArg } from '@wordpress/url';
 import { select, dispatch } from '@wordpress/data';
+import { parse } from '@wordpress/blocks';
 import { ShepherdTour, ShepherdTourContext } from 'react-shepherd';
 import { map, merge, findIndex } from 'lodash';
 import { initEvents } from './events';
@@ -20,9 +21,7 @@ export const awaitElement = async selector => {
 }
 
 export const clearAllBlocks = async () => {
-    const blocks = await select('core/block-editor').getBlocks();
-    const ids = map(blocks, 'clientId');
-    const removed = await dispatch('core/block-editor').removeBlocks(ids);
+    const removed = await dispatch('core/block-editor').resetBlocks(parse(''));
 
     return removed;
 }
