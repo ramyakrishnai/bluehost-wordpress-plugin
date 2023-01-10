@@ -169,10 +169,10 @@ describe('Onboarding Phase 2 Flow', () => {
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-primary-second > div > input'
 		).click();
 
-		// type `hello`
+		// type `Category`
 		cy.get(
 			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div.nfd-setup-primary-second > div > input'
-		).type('Hello');
+		).type('Category');
 
 		// deselect last category
 		cy.get(
@@ -201,69 +201,69 @@ describe('Onboarding Phase 2 Flow', () => {
 
 		cy.wait('@getSettings', {timeout: 10000});
 
-		// Installing WooCommerce plugin...
+		// WooCommerce plugin should already be installed
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(1) > select'
-		// ).select( 'India' );
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(1) > select'
+		).select( 'United States (US)' );
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(1) > select'
-		// ).type( 'IN' );
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(2) > input[type=text]'
+		).click();
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(2) > input[type=text]'
-		// ).click();
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(2) > input[type=text]'
+		).type( '5335 Gate Pkwy' );
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(2) > input[type=text]'
-		// ).type( 'Testing' );
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(1) > input[type=text]'
+		).type( 'Jacksonville' );
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(1) > input[type=text]'
-		// ).type( 'Testing' );
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(2) > select'
+		).select( 'Florida' );
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(2) > select'
-		// ).select( 'Karnataka' );
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(3) > input[type=text]'
+		).click();
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(3) > input[type=text]'
-		// ).click();
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(3) > input[type=text]'
+		).type( '32256' );
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(3) > input[type=text]'
-		// ).type( '560004' );
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(4) > input[type=email]'
+		).click();
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(4) > input[type=email]'
-		// ).click();
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(4) > input[type=email]'
+		).type( 'wordpress-coe@newfold.com' );
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(4) > input[type=email]'
-		// ).type( 'arunshenoy99@gmail.com' );
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(5) > select'
+		).select( 'United States (US) dollar (USD) ($)' );
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(5) > select'
-		// ).select( 'Indian rupee (INR) (₹)' );
+		// Deselect input
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div'
+		).click();
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div'
-		// ).click();
-
+		// Open info panel
 		// cy.get(
 		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__header > div > div.nfd-onboarding-header__end > button'
 		// ).click();
 
+		// CLose info panel
 		// cy.get(
 		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__sidebar > div > div > div > div.components-panel__header > div > button > svg'
 		// ).click();
 
-		// cy.get(
-		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > button'
-		// ).click();
+		// Click `Continue Setup` button
+		cy.get(
+			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > button'
+		).click();
 
-		// cy.wait( '@getSettings', { timeout: 10000 } );
+		cy.wait( '@getSettings', { timeout: 10000 } );
 
 		// cy.get(
 		// 	'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > div.components-base-control.nfd-onboarding-experience-step-tabs.components-radio-control__input.radio-control-tax-step.components-radio-control.css-qy3gpb.ej5x27r4 > div > div > div:nth-child(1) > label'
