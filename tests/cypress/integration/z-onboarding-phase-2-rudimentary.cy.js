@@ -202,45 +202,48 @@ describe('Onboarding Phase 2 Flow', () => {
 		cy.wait('@getSettings', {timeout: 10000});
 
 		// WooCommerce plugin should already be installed
+		cy.get('h2.nfd-step-card-heading')
+			.should('be.visible')
+			.should('have.text', 'Confirm your business or store address');
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(1) > select'
+			'#nfd-onboarding form div.store-address-form select[name="country"]'
 		).select( 'United States (US)' );
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(2) > input[type=text]'
+			'#nfd-onboarding form div.store-address-form input[name="woocommerce_store_address"]'
 		).click();
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(2) > input[type=text]'
+			'#nfd-onboarding form div.store-address-form input[name="woocommerce_store_address"]'
 		).type( '5335 Gate Pkwy' );
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(1) > input[type=text]'
+			'#nfd-onboarding form div.store-address-form input[name="woocommerce_store_city"]'
 		).type( 'Jacksonville' );
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(2) > select'
+			'#nfd-onboarding form div.store-address-form select[name="state"]'
 		).select( 'Florida' );
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(3) > input[type=text]'
+			'#nfd-onboarding form div.store-address-form input[name="woocommerce_store_postcode"]'
 		).click();
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(3) > div:nth-child(3) > input[type=text]'
+			'#nfd-onboarding form div.store-address-form input[name="woocommerce_store_postcode"]'
 		).type( '32256' );
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(4) > input[type=email]'
+			'#nfd-onboarding form div.store-address-form input[name="woocommerce_email_from_address"][type=email]'
 		).click();
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(4) > input[type=email]'
+			'#nfd-onboarding form div.store-address-form input[name="woocommerce_email_from_address"][type=email]'
 		).type( 'wordpress-coe@newfold.com' );
 
 		cy.get(
-			'#nfd-onboarding > div > div.interface-interface-skeleton__editor > div.interface-interface-skeleton__body > div.interface-interface-skeleton__content > main > div > div > div > form > div.store-address-form > div:nth-child(5) > select'
+			'#nfd-onboarding form div.store-address-form select[name="woocommerce_currency"]'
 		).select( 'United States (US) dollar (USD) ($)' );
 
 		// Deselect input
