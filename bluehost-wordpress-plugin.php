@@ -79,11 +79,10 @@ if ( version_compare( PHP_VERSION, '7.1', '>=' ) ) {
 /**
  * Check if platform is Jarvis
  *
- * @return bool
+ * @return array
  */
 function bh_is_jarvis() {
-	$is_jarvis = false;
-	$host      = array(
+	$host = array(
 		'dirs'      => explode( '/', ABSPATH ),
 		'user'      => get_current_user(),
 		'homedir'   => null,
@@ -106,18 +105,52 @@ function bh_is_jarvis() {
 		$host['info_file'] = file_get_contents( $host['homedir'] . '/.host-info' );
 	}
 
-	// Check for Jarvis platform
-	if (
-		null !== $host['info_file']
-		&& (
-			false !== stripos( $host['info_file'], 'platform = jarvis' )
-			|| false !== stripos( $host['info_file'], 'platform=jarvis' )
-		)
-	) {
-		$is_jarvis = true;
+	/**
+	 * Check if the billing platform is Jarvis
+	 *
+	 * @param array $host - .host-info file contents
+	 *
+	 * @return bool
+	 */
+	function is_jarvis( $host ) {
+		if (
+			null !== $host['info_file']
+			&& (
+				false !== stripos( $host['info_file'], 'platform = jarvis' )
+				|| false !== stripos( $host['info_file'], 'platform=jarvis' )
+			)
+		) {
+			return true;
+		}
+
+		return false;
 	}
 
-	return $is_jarvis;
+	/**
+	 * Check if Jarvis migration is in pending status
+	 *
+	 * @param array $host - .host-info file contents
+	 *
+	 * @return bool
+	 */
+	function is_pending_migration( $host ) {
+		if (
+			null !== $host['info_file']
+			&& (
+				false !== stripos( $host['info_file'], 'migration = pending' )
+				|| false !== stripos( $host['info_file'], 'migration=pending' )
+			)
+		) {
+			return true;
+		}
+
+		return false;
+	}
+
+	return array(
+		'isJarvis'           => is_jarvis( $host ),
+		'isPendingMigration' => is_pending_migration( $host ),
+	);
 }
 
 /*
@@ -144,10 +177,14 @@ $bh_module_container->set(
 );
 
 $bh_module_container->set(
-	'isJarvis',
+	'jarvis',
 	$bh_module_container->computed(
 		function () {
-			return bh_is_jarvis();
+			$jarvis = bh_is_jarvis();
+			return array(
+				'isJarvis'           => $jarvis['isJarvis'],
+				'isPendingMigration' => $jarvis['isPendingMigration'],
+			);
 		}
 	)
 );

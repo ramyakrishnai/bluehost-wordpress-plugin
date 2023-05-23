@@ -97,6 +97,7 @@ class Bluehost_Admin_App_Assets {
 	 */
 	protected function prepareData() {
 		global $bh_module_container;
+		$jarvis       = $bh_module_container->get( 'jarvis' );
 		$customerData = CustomerBluehost::collect();
 
 		$data = array(
@@ -112,10 +113,11 @@ class Bluehost_Admin_App_Assets {
 				'customer'             => $customerData,
 			),
 			'env'          => array(
-				'isPHP7'     => version_compare( phpversion(), '7.0.0' ) >= 0,
-				'phpVersion' => phpversion(),
-				'isStaging'  => Staging::getInstance()->isStaging(),
-				'isJarvis'   => $bh_module_container->get( 'isJarvis' ),
+				'isPHP7'          => version_compare( phpversion(), '7.0.0' ) >= 0,
+				'phpVersion'      => phpversion(),
+				'isStaging'       => Staging::getInstance()->isStaging(),
+				'isJarvis'        => $jarvis['isJarvis'],
+				'isPendingJarvis' => $jarvis['isPendingMigration'],
 			),
 			'wordpress'    => array(
 				'isFSE'                          => Bluehost_Admin_App_Utils::is_fse(),
